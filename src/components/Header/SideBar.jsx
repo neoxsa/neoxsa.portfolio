@@ -11,7 +11,16 @@ function SideBar({
       className={`fixed left-0 md:left-500 h-full z-50 transform ${open ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 ease-in-out `}
     >
-      <div className="w-screen md:w-72 h-full bg-[#0b0b0b]/95 text-white p-6 flex flex-col relative border border-green-400 m-5">
+      <div
+        className="w-screen md:w-72 h-full bg-[#0b0b0b]/95 text-white p-6 flex flex-col relative border border-green-400 m-5 shadow-lg shadow-emerald-400"
+        style={{
+          borderRadius: '8px',
+          backgroundColor: 'rgba(0, 0, 0, 0.9)',
+          padding: '10px',
+          boxShadow: 'inset 0 0 0 1px #16a34a',
+          filter: 'drop-shadow(0 0 2px #16a34a)',
+        }}
+      >
         <div>
 
           <nav>

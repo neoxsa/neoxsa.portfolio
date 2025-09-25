@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import logo from '/logo/logo.png';
 import { MenuIcon, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
@@ -79,7 +79,7 @@ function NavBar() {
                             Projects
                         </NavLink>
                     </li>
-                    <li className={navLinkClass}>
+                    <li >
                         <NavLink
                             to='/about'
                             className={navLinkClass}

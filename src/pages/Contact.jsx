@@ -23,8 +23,6 @@ function Contact() {
 
   const fieldClass = "border border-white/6 p-2 rounded-lg text-gray-100 focus:outline-none focus:border-green-400 "
 
-  console.log(form);
-
   return (
     <section className="min-h-[calc(100vh-120px)] flex items-center justify-center p-12">
       <div className="w-full max-w-4xl bg-white/j5 rounded-2xl grid md:grid-cols-2 gap-7 p-7 backdrop-blur-md shadow-lg outline outline-green-400 ">
@@ -82,7 +80,6 @@ function Contact() {
             type="submit" 
             className="inline-flex gap-2 text-green-400 border-2 border-green-400 px-8 py-3 font-semibold uppercase tracking-widest bg-green-500/10 hover:bg-green-600 active:bg-green-600 hover:text-black active:text-black transition-all duration-300 relative z-20 rounded-lg"
             >Send Message</button>
-            <Link to="/" className="text-gray-300 cursor-pointer">Back</Link>
           </div>
 
           {status && <p className="mt-2 text-red-300 font-semibold">{status}</p>}

@@ -1,7 +1,7 @@
 import btnCyan from '../../assets/btn/btn-cyan.svg'
 import { LucideGithub, Sparkle } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { projects } from '../../constants/constants'
+import { all_projects } from '../../constants/constants'
 
 
 function ProjectCard() {
@@ -20,7 +20,7 @@ function ProjectCard() {
       <div
         className="flex flex-col gap-20 px-10 md:px-20 w-full max-w-7xl  ">
 
-        {projects.map((card, i) => (
+        {all_projects.slice(0,3).map((project, i) => (
           <div
             key={i}
             className='relative'
@@ -41,8 +41,8 @@ function ProjectCard() {
               {/* Image */}
               <div>
                 <img
-                  src={card.img}
-                  alt={card.title}
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-78 object-cover object-left lg:object-fill lg:w-full lg:h-90 lg:object-fit border-2 border-emerald-600 transition-all duration-200 rounded-lg"
                 />
               </div>
@@ -50,25 +50,24 @@ function ProjectCard() {
               {/* Content */}
               <div className="mt-5 lg:w-1/2 ">
                 <h3 className="text-green-500 text-2xl font-bold mb-2 uppercase tracking-wide">
-                  {card.title}
+                  {project.title}
                 </h3>
-                <p className="text-gray-300 mb-4">{card.desc}</p>
+                <p className="text-gray-300 mb-4">{project.description}</p>
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-3">{
-                    card.stack.map((skill) => (
+                    project.tech_stack.map((stack) => (
                       <span
-                        key={skill}
+                        key={stack}
                         className=" px-4 py-2 bg-green-400/10 border border-green-400 text-green-300 rounded-full text-sm font-medium">
-                        {skill}
+                        {stack}
                       </span>
                     ))
                   }</div>
                 </div>
                 <div className=' flex flex-col lg:flex-row gap-5'>
                   <Link
-                    to={card.github_link}
+                    to={project.repoLink}
                     target='_blank'
-
                     className="relative inline-block w-48 h-12 group cursor-pointer hover:scale-105"
                   >
                     <img
@@ -81,7 +80,7 @@ function ProjectCard() {
                     </span>
                   </Link>
                   <Link
-                    to={card.preview_link}
+                    to={project.liveLink}
                     target='_blank'
                     className="relative inline-block w-48 h-12 group cursor-pointer hover:scale-105 "
                   >
