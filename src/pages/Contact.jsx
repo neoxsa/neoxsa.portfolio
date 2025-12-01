@@ -44,9 +44,9 @@ function Contact() {
         .then(
           () => {
             setIsSent(true);
+            setRecaptchaToken(null);
             setShowWarning(false);
             form.current.reset();
-            setRecaptchaToken(null);
           })
         .catch((err) => {
           setIsSent(false);
@@ -60,11 +60,13 @@ function Contact() {
 
   console.log("recap: ", recaptchaToken);
   console.log("type: ", typeof recaptchaToken);
+  console.log("isSent: ", isSent);
+  console.log("showWarning: ", showWarning);
 
 
   // Toast notify Handler
   const notify = () => {
-    isSent ? toast.success('Successfully sent!') : showWarning ? toast.warning('Please fill all the fields!') : toast.error('Failed to send!')
+    isSent ? toast.success('Successfully sent!') : showWarning && typeof recaptchaToken != 'string' ? toast.warning('Please fill all the fields!') : toast.error('Failed to send!')
   }
 
   const fieldClass = "border border-white/6 p-2 rounded-lg text-gray-100 focus:outline-none focus:border-green-400 "
