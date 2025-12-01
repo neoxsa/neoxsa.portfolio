@@ -13,14 +13,13 @@ function Contact() {
   const [isSent, setIsSent] = useState(false);
   const [showWarning, setShowWarning] = useState(true);
 
-// reCAPTCHA handler
-const handleRecaptchaChange = (token) => {
-  setRecaptchaToken(token);
-  if (form.current) {
-    form.current["g-recaptcha-response"].value = token;
-  }
-};
-
+  // reCAPTCHA handler
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+    if (form.current) {
+      form.current["g-recaptcha-response"].value = token;
+    }
+  };
 
   // EmailJS Handler
   const sendEmail = (e) => {
@@ -29,38 +28,39 @@ const handleRecaptchaChange = (token) => {
     // Token check
     if (!recaptchaToken) alert("Please complete the reCAPTCHA");
 
-   
 
     // Time field before sending
     form.current.time.value = new Date().toLocaleString();
 
-
-     emailjs
-      .sendForm(
-        "service_wvzlrnm",
-        "template_mr0uz23",
-        form.current,
-        "efRBSTSYnQz50SD7P"
-      )
-      .then(
-        () => {
-          setIsSent(true);
-          setShowWarning(false);
-          console.log("Success : ", isSent);
+    if (recaptchaToken) {
+      emailjs
+        .sendForm(
+          "service_wvzlrnm",
+          "template_mr0uz23",
+          form.current,
+          "efRBSTSYnQz50SD7P"
+        )
+        .then(
+          () => {
+            setIsSent(true);
+            setShowWarning(false);
+            form.current.reset();
+            setRecaptchaToken(null);
+          })
+        .catch((err) => {
+          setIsSent(false);
+          setShowWarning(true);
+          setRecaptchaToken(null);
+          console.log("Error", err);
         })
-      .catch((err) => {
-        setIsSent(false);
-        setShowWarning(true);
-        console.log("Error", err);
-      })
 
+    }
   }
 
   // Toast notify Handler
   const notify = () => {
     isSent ? toast.success('Successfully sent!') : showWarning ? toast.warning('Please fill all the fields!') : toast.error('Failed to send!')
   }
-
 
   const fieldClass = "border border-white/6 p-2 rounded-lg text-gray-100 focus:outline-none focus:border-green-400 "
 
