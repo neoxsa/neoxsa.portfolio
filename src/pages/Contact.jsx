@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Mail, Linkedin, Github, TriangleAlertIcon, CircleCheckIcon, OctagonXIcon } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { Toaster, toast } from 'sonner';
@@ -7,18 +8,34 @@ import { Toaster, toast } from 'sonner';
 function Contact() {
 
   const form = useRef();
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
   const [isSent, setIsSent] = useState(false);
   const [showWarning, setShowWarning] = useState(true);
+
+// reCAPTCHA handler
+const handleRecaptchaChange = (token) => {
+  setRecaptchaToken(token);
+  if (form.current) {
+    form.current["g-recaptcha-response"].value = token;
+  }
+};
+
 
   // EmailJS Handler
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Token check
+    if (!recaptchaToken) alert("Please complete the reCAPTCHA");
+
+   
+
     // Time field before sending
-    form.current.time.value = new Date().toLocaleString();   
+    form.current.time.value = new Date().toLocaleString();
 
 
-    emailjs
+     emailjs
       .sendForm(
         "service_wvzlrnm",
         "template_mr0uz23",
@@ -34,15 +51,15 @@ function Contact() {
       .catch((err) => {
         setIsSent(false);
         setShowWarning(true);
-        console.log("Failed", err);
+        console.log("Error", err);
       })
 
   }
 
   // Toast notify Handler
- const notify = () => {
-  isSent ? toast.success('Successfully sent!') : showWarning ? toast.warning('Please fill all the fields!') : toast.error('Failed to send!')
- }
+  const notify = () => {
+    isSent ? toast.success('Successfully sent!') : showWarning ? toast.warning('Please fill all the fields!') : toast.error('Failed to send!')
+  }
 
 
   const fieldClass = "border border-white/6 p-2 rounded-lg text-gray-100 focus:outline-none focus:border-green-400 "
@@ -125,6 +142,7 @@ function Contact() {
               required
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <input
               type='hidden'
@@ -132,6 +150,11 @@ function Contact() {
               value=""
             />
           </div>
+
+          <ReCAPTCHA
+            sitekey="6LfTCx4sAAAAAB22PdY7a1pvaCQNYFgH2CG4VzYT"
+            onChange={handleRecaptchaChange}
+          />
 
           <div className="flex items-center gap-3 mt-2">
             <button
