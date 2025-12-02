@@ -38,7 +38,6 @@ function Projects() {
 
         {/* Projects Grid */}
 
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map(project => (
             <div
@@ -54,6 +53,7 @@ function Projects() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-300 "
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition"></div>
               </div>

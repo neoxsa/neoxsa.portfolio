@@ -3,8 +3,10 @@ import logo from '/logo/logo.png';
 import { MenuIcon, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { SideBar } from '#components';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
+    const navigate = useNavigate();
     const [hamMenuOpen, setHamMenuOpen] = useState(false);
 
     const toggleHamMenu = () => {
@@ -14,9 +16,9 @@ function NavBar() {
     const navLinkClass = ({ isActive }) => `${isActive ? 'text-emerald-400' : 'text-white'} cursor-pointer transition duration-300`;
     return (
         <>
-            <nav className="sticky top-0 z-50 md:relative flex justify-between items-center py-3 md:py-3.5 px-8 w-[calc(100%-30px)] bg-green-300/10 backdrop-blur-xl mx-4 rounded-lg">
+            <nav className="navBar">
                 {/* Logo */}
-                <div className="cursor-pointer">
+                <div className="cursor-pointer" onClick={() => navigate('/')}>
                     <img src={logo} alt="logo" className="h-11 md:h-13 xl:h-14" />
                 </div>
 
