@@ -35,7 +35,6 @@ function HeroCard() {
             {/* Image */}
             <img
               src={profile_pic}
-              loading="lazy"
               alt="Profile"
               loading="lazy"
               className="relative h-64 sm:h-72  md:h-80 w-full object-cover border-2 border-green-400 transform transition-transform duration-500 ease-in-out group-hover:scale-105 grayscale-75 hover:grayscale-0"
