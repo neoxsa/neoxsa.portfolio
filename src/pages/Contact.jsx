@@ -13,6 +13,7 @@ function Contact() {
   const [isSent, setIsSent] = useState(false);
   const [showWarning, setShowWarning] = useState(true);
 
+
   // reCAPTCHA handler
   const handleRecaptchaChange = (token) => {
     setRecaptchaToken(token);
@@ -21,20 +22,29 @@ function Contact() {
     }
   };
 
+
+  // Toast notify Handler
+  const notify = () => {
+    
+  }
+
+
+  
   // EmailJS Handler
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     // Token check
     if (!recaptchaToken) {
-      alert("Please complete the reCAPTCHA")
+        setShowWarning(true);
+      toast.warning("Please complete the reCAPTCHA");
       return;
-    } else {
+    } else if (typeof recaptchaToken === "string") {
 
       // Time field before sending
       form.current.time.value = new Date().toLocaleString();
 
-      emailjs
+     await emailjs
         .sendForm(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -44,34 +54,22 @@ function Contact() {
         .then(
           () => {
             setIsSent(true);
+            toast.success("Successfully sent!");
+            form.current.reset();
             setRecaptchaToken(null);
             setShowWarning(false);
-            form.current.reset();
           })
         .catch((err) => {
           setIsSent(false);
           setShowWarning(true);
-          setRecaptchaToken(null);
+          toast.error("Failed to send. Please try again later.");
           console.log("Error", err);
+          setRecaptchaToken(null);
         })
 
     }
   }
 
-  console.log("recap: ", recaptchaToken);
-  console.log("type: ", typeof recaptchaToken);
-  console.log("isSent: ", isSent);
-  console.log("showWarning: ", showWarning);
-
-
-  // Toast notify Handler
-  const notify = () => {
-     showWarning || !recaptchaToken
-    ? toast.warning("Please fill all the fields!")
-    : isSent
-    ? toast.success("Successfully sent!")
-    : toast.error("Failed to send");
-  }
 
   const fieldClass = "border border-white/6 p-2 rounded-lg text-gray-100 focus:outline-none focus:border-green-400 "
 
@@ -81,7 +79,7 @@ function Contact() {
       <Toaster
         position='top-center'
         theme='system'
-        toastOptions={{ duration: 2000 }}
+        toastOptions={{ duration: 3000 }}
         icons={{
           success: <CircleCheckIcon className='text-green-500' size={20} />,
           error: <OctagonXIcon className='text-red-500' size={20} />,
@@ -170,7 +168,6 @@ function Contact() {
           <div className="flex items-center gap-3 mt-2">
             <button
               type="submit"
-              onClick={notify}
               className="inline-flex gap-2 text-green-400 border-2 border-green-400 px-8 py-3 font-semibold uppercase tracking-widest bg-green-500/10 hover:bg-green-600 active:bg-green-600 hover:text-black active:text-black transition-all duration-300 relative z-20 rounded-lg"
             >Send Message</button>
           </div>
