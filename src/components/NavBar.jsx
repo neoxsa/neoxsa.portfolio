@@ -16,7 +16,7 @@ function NavBar() {
     const navLinkClass = ({ isActive }) => `${isActive ? 'text-emerald-400' : 'text-white'} cursor-pointer transition duration-300`;
     return (
         <>
-            <nav className="navBar sticky top-0 z-50 flex justify-between items-center py-3 md:py-3.5 px-8 w-[calc(100%-30px)] mx-4 rounded-lg">
+            <nav className="navBar sticky top-0 z-50 flex justify-between items-center py-3 md:py-3.5 px-8 w-[calc(100%-30px)] mx-4 rounded-lg backdrop-blur-lg">
                 {/* Logo */}
                 <div className="cursor-pointer" onClick={() => navigate('/')}>
                     <img src={logo} alt="logo" className="h-11 md:h-13 xl:h-14" />

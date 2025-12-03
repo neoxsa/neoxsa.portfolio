@@ -61,8 +61,6 @@ body::-webkit-scrollbar {
 /* NavBar Additional CSS */
 .navBar {
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(22, 163, 74, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
