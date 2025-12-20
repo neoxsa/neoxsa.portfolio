@@ -2,18 +2,27 @@ export const config = { runtime: "nodejs" };
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, error: 'Method not allowed' });
+    return res.status(405).json({
+      success: false,
+      error: 'Method not allowed'
+    });
   }
 
   const { token } = req.body || {};
 
   if (!token || typeof token !== 'string') {
-    return res.status(400).json({ success: false, error: 'Invalid or missing token' });
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid or missing token'
+    });
   }
 
   if (!process.env.TURNSTILE_SECRET_KEY) {
     console.error('TURNSTILE_SECRET_KEY not configured');
-    return res.status(500).json({ success: false, error: 'Server config error' });
+    return res.status(500).json({
+      success: false,
+      error: 'Server config error'
+    });
   }
 
   try {
@@ -34,18 +43,32 @@ export default async function handler(req, res) {
       data = text ? JSON.parse(text) : null;
     } catch (err) {
       console.error('Invalid JSON from Turnstile upstream:', err.text);
-      return res.status(502).json({ success: false, error: 'Invalid upstream response' });
+      return res.status(502).json({
+        success: false,
+        error: 'Invalid upstream response'
+      });
     }
 
     if (!upstream.ok) {
       console.error('Turnstile upstream error', upstream.status, data);
-      return res.status(502).json({ success: false, error: 'Verification service error', upstreamStatus: upstream.status, upstreamBody: data });
+      return res.status(502).json({
+        success: false,
+        error: 'Verification service error',
+        upstreamStatus: upstream.status,
+        upstreamBody: data
+      });
     }
 
-    return res.status(200).json({ success: data?.success === true, upstream: data });
+    return res.status(200).json({
+      success: data?.success === true,
+      upstream: data
+    });
 
   } catch (error) {
     console.error('Error verifying Turnstile token:', error);
-    return res.status(500).json({ success: false, error: 'Internal server error' });
+    return res.status(500).json({
+      success: false,
+      error: 'Internal server error'
+    });
   }
 }
