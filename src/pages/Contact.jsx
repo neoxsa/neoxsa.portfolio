@@ -193,7 +193,7 @@ function Contact() {
           {/* Turnstile widget */}
           <div
             className='cf-turnstile'
-            data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+            data-sitekey={String(import.meta.env.VITE_TURNSTILE_SITE_KEY)}
             data-callback="__turnstileCallback"
             data-expired-callback="__turnstileExpire"
           ></div>
