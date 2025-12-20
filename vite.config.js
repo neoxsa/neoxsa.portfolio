@@ -13,5 +13,14 @@ export default defineConfig({
       '#components': resolve(dirname(fileURLToPath(import.meta.url)), 'src/components'),
       '#constants': resolve(dirname(fileURLToPath(import.meta.url)), 'src/constants'),
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
   }
 })

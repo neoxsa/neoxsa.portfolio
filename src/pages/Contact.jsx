@@ -1,37 +1,81 @@
-import { useRef, useState } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha';
-import { Mail, Linkedin, Github, TriangleAlertIcon, CircleCheckIcon, OctagonXIcon } from 'lucide-react'
-import emailjs from '@emailjs/browser'
+import { useEffect, useRef, useState } from 'react';
+import { Mail, Linkedin, Github, TriangleAlertIcon, CircleCheckIcon, OctagonXIcon } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { Toaster, toast } from 'sonner';
 
 
 function Contact() {
 
   const form = useRef();
-  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [captchaToken, setCaptchaToken] = useState(null);
 
-  // reCAPTCHA handler
-  const handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-    if (form.current) {
-      form.current["g-recaptcha-response"].value = token;
+  useEffect(() => {
+    //Load Turnstile script
+    // expose callbacks that the Turnstile widget will call
+    window.__turnstileCallback = (token) => {
+      setCaptchaToken(token);
+    };
+
+    window.__turnstileExpire = () => {
+      setCaptchaToken(null);
+    };
+
+    // Only add script if it's not already present
+    if (!document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      document.head.appendChild(script);
     }
-  };
 
+    return () => {
+      // Cleanup global callbacks on unmount
+      try {
+        delete window.__turnstileCallback;
+      } catch (e) {
+        console.log("error::", e)
+      }
+      try {
+        delete window.__turnstileExpire;
+      } catch (e) {
+        console.log("error::", e)
+      }
+    };
+  }, [])
+
+  useEffect(() => {
+    if (captchaToken) console.debug('Turnstile token:', captchaToken);
+  }, [captchaToken]);
 
   // EmailJS Handler
   const sendEmail = async (e) => {
     e.preventDefault();
 
+    // Check if token exists FIRST
+    if (!captchaToken) {
+      toast.warning("Please verify you are human");
+      return;
+    }
 
-    if (!recaptchaToken) {
-      toast.warning("Please complete the reCAPTCHA");
+    try {
+      // Then verify with API
+      const verifyRes = await fetch("/api/verify-turnstile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: captchaToken })
+      });
 
-    } else if (typeof recaptchaToken === "string") {
+      const verifyData = await verifyRes.json();
 
-      // Time field before sending
+      if (!verifyData.success) {
+        toast.error("Verification failed. Please try again.");
+        return;
+      }
+
+      // Set time field before sending
       form.current.time.value = new Date().toLocaleString();
 
+      // Send email
       await emailjs
         .sendForm(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -39,20 +83,20 @@ function Contact() {
           form.current,
           import.meta.env.VITE_EMAILJS_PK
         )
-        .then(
-          () => {
-            toast.success("Successfully sent!");
-            form.current.reset();
-            setRecaptchaToken(null);
-          })
+        .then(() => {
+          toast.success("Successfully sent!");
+          form.current.reset();
+          setCaptchaToken(null);
+        })
         .catch((err) => {
           toast.error("Failed to send. Please try again later.");
-          console.log("Error", err);
-          setRecaptchaToken(null);
-        })
+          console.error("EmailJS Error:", err);
+          setCaptchaToken(null);
+        });
 
-    } else {
-      toast.error("reCAPTCHA verification failed. Please try again.");
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+      console.error("Error:", error);
     }
   }
 
@@ -146,10 +190,19 @@ function Contact() {
             />
           </div>
 
-          <ReCAPTCHA
-            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-            onChange={handleRecaptchaChange}
-          />
+          {/* Turnstile widget */}
+          <div
+            className='cf-turnstile'
+            data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+            data-callback="__turnstileCallback"
+            data-expired-callback="__turnstileExpire"
+          ></div>
+          {/* <Turnstile
+            sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+            onVerify={(token) => setCaptchaToken(token)}
+            onExpire={() => setCaptchaToken(null)}
+          /> */}
+
 
           <div className="flex items-center gap-3 mt-2">
             <button
