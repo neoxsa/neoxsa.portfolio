@@ -1,5 +1,6 @@
 import nguyen_p1 from '/projectImages/nguyen_p1.webp'
 import ud_p2 from '/projectImages/ud_p2.webp'
+import lume_p3 from '/projectImages/lume_p3.webp'
 import notion_landing_page from '/projectImages/notion_landing_page.webp'
 
 
@@ -26,6 +27,24 @@ const all_projects = [
   },
   {
     id: 3,
+    title: "LUME — Movie Platform",
+    description: "A movie discovery and browsing platform built with React, Vite, Tailwind CSS, and Redux Toolkit.",
+    image: lume_p3,
+    tech_stack: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "React Router",
+      "Swiper",
+      "Lucide React"
+    ],
+    category: 'Frontend',
+    liveLink: 'https://lume-movie-str.vercel.app/',
+    repoLink: 'https://github.com/neoxsa/LUME-Movie-Str'
+  },
+  {
+    id: 4,
     title: 'Notion Landing Page (Clone)',
     description: 'This project is a frontend practice clone of the Notion landing page, built using HTML, CSS, and JavaScript.',
     image: notion_landing_page,
@@ -54,16 +73,7 @@ const all_projects = [
   //   liveLink: 'https://example-chatbot.com',
   //   repoLink: 'https://github.com/neoxsa/chatbot'
   // },
-  // {
-  //   id: 6,
-  //   title: 'Portfolio Website',
-  //   description: 'A modern, responsive portfolio website showcasing projects, skills, and professional experience.',
-  //   image: 'https://via.placeholder.com/400x250?text=Portfolio',
-  //   tech_stack: ['React', 'Tailwind CSS', 'Vite'],
-  //   category: 'Frontend',
-  //   liveLink: 'https://example-portfolio.com',
-  //   repoLink: 'https://github.com/neoxsa/portfolio'
-  // }
+
 ]
 
 export { all_projects };
