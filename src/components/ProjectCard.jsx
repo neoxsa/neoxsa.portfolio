@@ -19,7 +19,7 @@ function ProjectCard() {
       <div
         className="flex flex-col gap-20 px-10 md:px-20 w-full max-w-7xl  ">
 
-        {all_projects.slice(0,2).map((project, i) => (
+        {all_projects.slice(0,3).map((project, i) => (
           <div
             key={i}
             className='relative'
