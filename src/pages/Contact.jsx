@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Mail, Linkedin, Github, TriangleAlertIcon, CircleCheckIcon, OctagonXIcon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { Toaster, toast } from 'sonner';
+import { contact } from '#constants/constants';
 
 
 function Contact() {
@@ -130,17 +131,17 @@ function Contact() {
             <a
               href="mailto:sadabanwar@outlook.com"
               className="w-fit text-green-300 font-medium hover:underline flex">
-              <Mail size={20} />&nbsp;&gt; sadabanwar@outlook.com
+              <Mail size={20} />&nbsp;&gt; {contact.email}
             </a>
             <a
-              href="https://linkedin.com/in/neoxsa"
+              href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
               className="w-fit text-blue-400 font-medium  hover:underline flex">
               <Linkedin size={20} />&nbsp;&gt; LinkedIn
             </a>
             <a
-              href="https://github.com/neoxsa"
+              href={contact.github}
               target="_blank" rel="noreferrer"
               className="w-fit text-gray-400 font-medium hover:underline flex">
               <Github size={20} />&nbsp;&gt; GitHub
