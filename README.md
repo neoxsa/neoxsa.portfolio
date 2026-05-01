@@ -80,7 +80,3 @@ const all_projects = [
 
 **SADAB ANWAR**
 **[@neoxsa](https://github.com/neoxsa)**
-
----
-
-⭐ If you like this project, give it a star!
