@@ -1,10 +1,10 @@
-import { HeroCard, ProjectCard } from '#components'
+import { HeroCard, ProjectBigCard } from '#components'
 
 function Home() {
     return (
         <>
             <HeroCard />
-            <ProjectCard />
+            <ProjectBigCard />
         </>
     )
 }
