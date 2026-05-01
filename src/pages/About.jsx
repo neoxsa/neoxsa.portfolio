@@ -1,3 +1,4 @@
+import { aboutPara, intro, skills, socialUrl } from '#constants/constants'
 import { GithubIcon, Linkedin, Download } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ function About() {
                     <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">About Me</h1>
                     <div className="h-1 w-20 inline-flex bg-green-400 mb-8"></div>
                     <p className="text-lg text-gray-300 leading-relaxed max-w-2xl">
-                       I'm a passionate frontend developer focused on building clean, responsive, and user-friendly web applications. With hands-on experience in React, I love turning ideas into functional interfaces.
+                       {intro.aboutIntro}
                     </p>
                 </div>
 
@@ -19,14 +20,14 @@ function About() {
                     <div>
                         <h2 className="text-2xl font-bold text-green-400 mb-6">Who I Am</h2>
                         <div className="space-y-4 text-gray-300">
-                            <p>
-                                I'm an aspiring developer currently building real-world projects to sharpen my skills and explore modern web technologies. I enjoy crafting smooth, responsive UI and improving with every project.
+                            <p>k
+                               {aboutPara.p1}
                             </p>
                             <p>
-                                I believe in continuous learning and pushing myself to understand the “why” behind the code.
+                                {aboutPara.p2}
                             </p>
                             <p>
-                                Always open to new opportunities and collaborations—feel free to reach out so we can build something meaningful together.
+                                {aboutPara.p3}
                             </p>
                         </div>
 
@@ -51,8 +52,8 @@ function About() {
                         <div className="mb-8">
                             <h3 className="text-lg font-semibold text-white mb-4">Frontend</h3>
                             <div className="flex flex-wrap gap-3">
-                                {['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'HTML5', 'CSS3'].map(skill => (
-                                    <span key={skill} className="px-4 py-2 bg-green-400/10 border border-green-400 text-green-300 rounded-full text-sm font-medium">
+                                {skills.frontend.map(skill => (
+                                    <span key={skill} className="px-4 py-2 bg-green-400/10 border-dashed border border-green-400 text-green-300 rounded-full text-sm font-medium">
                                         {skill}
                                     </span>
                                 ))}
@@ -63,8 +64,8 @@ function About() {
                         <div>
                             <h3 className="text-lg font-semibold text-white mb-4">Tools & Others</h3>
                             <div className="flex flex-wrap gap-3">
-                                {['Git', 'GitHub', 'VS Code', 'Canva', 'Inkscape'].map(skill => (
-                                    <span key={skill} className="px-4 py-2 bg-green-400/10 border border-green-400 text-green-300 rounded-full text-sm font-medium">
+                                {skills.tools.map(skill => (
+                                    <span key={skill} className="px-4 py-2 bg-green-400/10 border-dashed border border-green-400 text-green-300 rounded-full text-sm font-medium">
                                         {skill}
                                     </span>
                                 ))}
@@ -77,10 +78,10 @@ function About() {
                 <div className="mt-20 text-center">
                     <h2 className="text-2xl font-bold text-green-400 mb-8">Connect With Me</h2>
                     <div className="flex justify-center gap-6">
-                        <a href="https://github.com/neoxsa" target="_blank" rel="noreferrer" className="p-3 bg-green-400/10 border border-green-400 rounded-lg text-green-400 hover:bg-green-400 hover:text-black transition">
+                        <a href={socialUrl.github} target="_blank" rel="noreferrer" className="p-3 bg-green-400/10 border border-green-400 rounded-lg text-green-400 hover:bg-green-400 hover:text-black transition">
                             <GithubIcon size={24} />
                         </a>
-                        <a href="https://linkedin.com/in/neoxsa" target="_blank" rel="noreferrer" className="p-3 bg-green-400/10 border border-green-400 rounded-lg text-green-400 hover:bg-green-400 hover:text-black transition">
+                        <a href={socialUrl.linkedIn} target="_blank" rel="noreferrer" className="p-3 bg-green-400/10 border border-green-400 rounded-lg text-green-400 hover:bg-green-400 hover:text-black transition">
                             <Linkedin size={24} />
                         </a>
                     </div>
