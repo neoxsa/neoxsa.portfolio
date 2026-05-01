@@ -1,12 +1,11 @@
-import profile_pic from '/profilePic/profile_pic.webp'
 import { Link } from 'react-router-dom'
 import { LucideGithub } from 'lucide-react'
 import cy_2077_border from '../assets/btn/cy_2077_border.svg';
+import { intro, profile, socialUrl } from '#constants/constants';
 
 
 function HeroCard() {
   return (
-
     <>
       <section className="relative w-full flex flex-col gap-10 lg:flex-row items-center justify-center px-6 lg:px-20 py-28 lg:pt-60 bg-black/50 overflow-hidden">
         {/* Background neon aura */}
@@ -34,7 +33,7 @@ function HeroCard() {
 
             {/* Image */}
             <img
-              src={profile_pic}
+              src={profile.picture}
               alt="Profile"
               loading="lazy"
               className="relative h-64 sm:h-72  md:h-80 w-full object-cover border-2 border-green-400 transform transition-transform duration-500 ease-in-out group-hover:scale-105 grayscale-75 hover:grayscale-0"
@@ -75,27 +74,25 @@ function HeroCard() {
           ></div>
 
           <h1 className="text-green-500 text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-wide mb-6 relative z-20 text-center md:text-left">
-            Sadab Anwar
+            {profile.name}
           </h1>
 
           {/*Animated Frontend Developer tag */}
           <div className="relative z-20 mb-6 text-center md:text-left">
             <span className="text-cyan-600 font-semibold uppercase tracking-widest text-base sm:text-lg border-l-4 border-green-500 pl-3 animate-pulse">
-              Frontend Developer &gt;&gt;&gt;
+              {profile.role} &gt;&gt;&gt;
             </span>
           </div>
 
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mb-8 relative z-20 text-center md:text-left">
-            I create modern web interfaces with React.
-            I like keeping things simple, clear, and user-friendly.
-            Every project is about improving the experience.
+           {intro.heroIntro}
           </p>
 
           {/* Button Section */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
 
             <Link
-              to="https://github.com/neoxsa"
+              to={socialUrl.github}
               target="_blank"
               className="inline-flex gap-2 text-green-400 border-2 border-green-400 px-8 py-3 font-semibold uppercase tracking-widest bg-green-500/10 hover:bg-green-600 active:bg-green-600 hover:text-black active:text-black transition-all duration-300 relative z-20"
               style={{
