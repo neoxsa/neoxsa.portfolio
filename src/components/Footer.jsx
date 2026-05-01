@@ -1,17 +1,18 @@
-import { GithubIcon, LinkedinIcon} from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import cy_2077_border from '../assets/btn/cy_2077_border.svg';
+import { contact, socialUrl } from '#constants/constants';
 
 function Footer() {
     return (
         <footer className="relative mt-20 ">
-           <div
-            className="w-full h-4 bg-repeat-x"
-            style={{
-              backgroundImage: `url(${cy_2077_border})`,
-              backgroundSize: 'auto 100%'
-            }}
-          ></div>
+            <div
+                className="w-full h-4 bg-repeat-x"
+                style={{
+                    backgroundImage: `url(${cy_2077_border})`,
+                    backgroundSize: 'auto 100%'
+                }}
+            ></div>
 
             <div
                 className="bg-[#0a0a0a]/50 backdrop-blur-md text-white px-8 py-12 relative"
@@ -35,8 +36,9 @@ function Footer() {
                             style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
                             <h3 className="text-green-400 text-lg font-mono mb-4">&gt; CONTACT<span className='animate-ping'>_</span></h3>
                             <div className="space-y-2 text-green-400 font-mono text-sm md:text-[15px]">
-                                <p>&gt; <span className='text-cyan-300'>EMAIL:</span>  sadabanwar@outlook.com</p>
-                                <p>&gt; <span className='text-cyan-300'>LOCATION:</span> New Delhi, India</p>
+                                <p>&gt; <span className='text-cyan-300'>EMAIL:</span> <a href={`mailto:${contact.email}`}
+                                    className="text-green-400 hover:text-yellow-300">{contact.email}</a> </p>
+                                <p>&gt; <span className='text-cyan-300'>LOCATION:</span> {contact.address} </p>
                             </div>
                         </div>
 
@@ -80,30 +82,63 @@ function Footer() {
                             <h3 className="text-green-400 text-lg font-mono mb-4">&gt; NETWORKS<span className='animate-ping'>_</span></h3>
                             <div className="space-y-2 text-green-300 font-mono text-sm md:text-[15px]">
                                 <Link
-                                    to="https://www.linkedin.com/in/neoxsa/" target="_blank" rel="noopener noreferrer"
+                                    to={socialUrl.linkedIn} target="_blank" rel="noopener noreferrer"
                                     className="hover:text-blue-400 cursor-pointer transition flex items-center gap-2">
-                                    &gt;<LinkedinIcon className='w-4 h-4 relative bottom-0.5' /> LINKEDIN.COM
+                                    &gt;<LinkedinIcon className='w-4 h-4 relative bottom-0.5' /> linkedin.com
                                 </Link>
                                 <Link
-                                    to="https://www.github.com/neoxsa" target="_blank" rel="noopener noreferrer"
+                                    to={socialUrl.github} target="_blank" rel="noopener noreferrer"
                                     className="hover:text-gray-500 cursor-pointer transition flex items-center gap-2">
-                                    &gt;<GithubIcon className='w-4 h-4 relative bottom-0.5' /> GITHUB.COM
+                                    &gt;<GithubIcon className='w-4 h-4 relative bottom-0.5' /> github.com
                                 </Link>
                                 {/* <Link
-                                    to="https://www.twitter.com/neoxsa" target="_blank" rel="noopener noreferrer"
+                                    to="" target="_blank" rel="noopener noreferrer"
                                     className="hover:text-slate-300 cursor-pointer transition flex items-center gap-2">
-                                    &gt;<TwitterIcon className='w-4 h-4 relative bottom-0.5' /> TWITTER.COM
+                                    &gt;<TwitterIcon className='w-4 h-4 relative bottom-0.5' /> x.com
                                 </Link> */}
 
                             </div>
                         </div>
                     </div>
 
-                    {/* Bottom Terminal */}
-                    <div className="bg-black border border-green-500 p-4 font-mono text-green-400 text-center text-sm">
-                        <p>&gt; © 2025 NEOXSA.EXE | POWERED_BY: REACT.JS + TAILWIND.CSS | STATUS: ONLINE<span className='animate-ping'>_</span></p>
-                        <div className="mt-2 text-xs text-cyan-600">
-                            <span className="animate-pulse">[SYSTEM_READY]</span> | CONNECTION_ESTABLISHED | WELCOME_TO_NEOXSA_PORTFOLIO
+                    <div className="bg-black border border-green-500 p-4 font-mono text-green-400 text-sm">
+
+                        {/* Bottom Terminal */}
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-green-500">&gt;</span>
+
+                            <span>© {new Date().getFullYear()} NEOXSA.EXE</span>
+
+                            <span className="text-green-700">|</span>
+
+                            <span className="text-green-300">
+                                POWERED_BY: REACT.JS + TAILWIND.CSS
+                            </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 mt-1">
+                            <span className="text-green-500">&gt;</span>
+
+                            <span>STATUS:</span>
+                            <span className="text-green-300">ONLINE</span>
+
+                            {/* live dot */}
+                           <sup>
+                             <span className="relative flex h-2 w-2 my-2">
+                                <span className="animate-ping absolute -bottom-0.5 inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex -bottom-0.5 rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                           </sup>
+                        </div>
+
+
+                        <div className="mt-2 text-xs text-cyan-500 flex flex-wrap gap-2">
+                            <span className="text-green-500">&gt;</span>
+                            <span className="animate-pulse">[SYSTEM_READY]</span>
+                            <span>|</span>
+                            <span>CONNECTION_ESTABLISHED</span>
+                            <span>|</span>
+                            <span>WELCOME_TO_NEOXSA_PORTFOLIO</span>
                         </div>
                     </div>
                 </div>
