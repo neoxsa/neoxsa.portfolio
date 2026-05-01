@@ -15,9 +15,9 @@ A modern, responsive portfolio website built with React and Tailwind CSS. Featur
 ![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.17-38B2AC?logo=tailwind-css&logoColor=white)
 
-## ⚠️ Credit Notice
+## ⭐ Support
 
-**If you fork this repository, please give credit to the original author [@neoxsa](https://github.com/neoxsa).** Attribution is appreciated! 🙏
+If you like this project, don’t forget to ⭐ the repo.  
 
 ## ✨ Features
 
