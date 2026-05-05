@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from '/logo/logo.png';
+import logo from '/logo/logo.webp';
 import { MenuIcon, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { SideBar } from '#components';
