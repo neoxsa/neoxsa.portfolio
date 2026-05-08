@@ -81,24 +81,18 @@ function Footer() {
                         <div className="bg-black/60 p-6 border border-green-500/50 relative" style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
                             <h3 className="text-green-400 text-lg font-mono mb-4">&gt; NETWORKS<span className='animate-ping'>_</span></h3>
                             <div className="space-y-2 text-green-300 font-mono text-sm md:text-[15px]">
-                                <Link
-                                    to={socialUrl.linkedIn} target="_blank" rel="noopener noreferrer"
+                                <a
+                                    href={socialUrl.linkedIn} target="_blank" rel="noopener noreferrer"
                                     className="hover:text-blue-400 cursor-pointer transition flex items-center gap-2">
                                     &gt;<LinkedinIcon className='w-4 h-4 relative bottom-0.5' /> linkedin.com
                                     <span className='sr-only'>LinkedIn Profile</span>
-                                </Link>
-                                <Link
-                                    to={socialUrl.github} target="_blank" rel="noopener noreferrer"
+                                </a>
+                                <a
+                                    href={socialUrl.github} target="_blank" rel="noopener noreferrer"
                                     className="hover:text-gray-500 cursor-pointer transition flex items-center gap-2">
                                     &gt;<GithubIcon className='w-4 h-4 relative bottom-0.5' /> github.com
                                     <span className='sr-only'>GitHub Profile</span>
-                                </Link>
-                                {/* <Link
-                                    to="" target="_blank" rel="noopener noreferrer"
-                                    className="hover:text-slate-300 cursor-pointer transition flex items-center gap-2">
-                                    &gt;<TwitterIcon className='w-4 h-4 relative bottom-0.5' /> x.com
-                                    <span className='sr-only'>Twitter Profile</span>
-                                </Link> */}
+                                </a>                                 
 
                             </div>
                         </div>
