@@ -58,14 +58,14 @@ function SideBar({
           <p className="text-sm text-gray-300 mb-3">Connect</p>
           <div className="flex gap-3">
             <a href={contact.github} target="_blank" rel="noreferrer"
-              aria-label='GitHub Profile'
               className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
               <GithubIcon className='text-green-400 active:text-white' />
+              <span className='sr-only'>GitHub Profile</span>
             </a>
             <a href={contact.linkedin} target="_blank" rel="noreferrer"
-              aria-label='LinkedIn Profile'
               className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
               <Linkedin className='text-green-400 active:text-white' />
+              <span className='sr-only'>LinkedIn Profile</span>
             </a>
           </div>
         </div>

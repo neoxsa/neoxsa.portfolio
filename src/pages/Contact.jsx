@@ -130,25 +130,25 @@ function Contact() {
           <div className="flex flex-col gap-2">
             <a
               href="mailto:sadabanwar@outlook.com"
-              aria-label='Email ID'
               className="w-fit text-green-300 font-medium hover:underline flex">
               <Mail size={20} />&nbsp;&gt; {contact.email}
+              <span className='sr-only'>Email</span>
             </a>
             <a
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
-              aria-label='LinkedIn Profile'
               className="w-fit text-blue-400 font-medium  hover:underline flex">
               <Linkedin size={20} />&nbsp;&gt; LinkedIn
+              <span className='sr-only'>LinkedIn Profile</span>
             </a>
             <a
               href={contact.github}
               target="_blank" 
               rel="noreferrer"
-              aria-label='GitHub Profile'
               className="w-fit text-gray-400 font-medium hover:underline flex">
               <Github size={20} />&nbsp;&gt; GitHub
+              <span className='sr-only'>GitHub Profile</span>
             </a>
           </div>
         </div>
