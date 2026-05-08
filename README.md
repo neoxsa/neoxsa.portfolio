@@ -1,5 +1,5 @@
 <h2 align="center">
-<img src="public/logo/logo.png" alt="NeoXsa Portfolio" width="150">
+<img src="public/logo/logo.webp" alt="NeoXsa Portfolio" width="150">
 <p align="center" style="font-size: 24px; font-weight: bold; margin-top: 15px;">[NeoXsa Portfolio](https://neoxsa.vercel.app)</p>
 </h2>
 
