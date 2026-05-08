@@ -1,3 +1,4 @@
+import { contact } from '#constants/constants'
 import { GithubIcon, Linkedin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -56,10 +57,14 @@ function SideBar({
         <div className="mt-t absolute bottom-30">
           <p className="text-sm text-gray-300 mb-3">Connect</p>
           <div className="flex gap-3">
-            <a href="https://github.com/neoxsa" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
+            <a href={contact.github} target="_blank" rel="noreferrer"
+              aria-label='GitHub Profile'
+              className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
               <GithubIcon className='text-green-400 active:text-white' />
             </a>
-            <a href="https://linkedin.com/in/neoxsa" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
+            <a href={contact.linkedin} target="_blank" rel="noreferrer"
+              aria-label='LinkedIn Profile'
+              className="p-2 rounded bg-white/3 hover:bg-white/5 outline outline-green-400">
               <Linkedin className='text-green-400 active:text-white' />
             </a>
           </div>

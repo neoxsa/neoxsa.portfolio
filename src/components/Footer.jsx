@@ -83,16 +83,19 @@ function Footer() {
                             <div className="space-y-2 text-green-300 font-mono text-sm md:text-[15px]">
                                 <Link
                                     to={socialUrl.linkedIn} target="_blank" rel="noopener noreferrer"
+                                    aria-label='LinkedIn Profile'
                                     className="hover:text-blue-400 cursor-pointer transition flex items-center gap-2">
                                     &gt;<LinkedinIcon className='w-4 h-4 relative bottom-0.5' /> linkedin.com
                                 </Link>
                                 <Link
                                     to={socialUrl.github} target="_blank" rel="noopener noreferrer"
+                                    aria-label='GitHub Profile'
                                     className="hover:text-gray-500 cursor-pointer transition flex items-center gap-2">
                                     &gt;<GithubIcon className='w-4 h-4 relative bottom-0.5' /> github.com
                                 </Link>
                                 {/* <Link
                                     to="" target="_blank" rel="noopener noreferrer"
+                                    aria-label='Twitter Profile'
                                     className="hover:text-slate-300 cursor-pointer transition flex items-center gap-2">
                                     &gt;<TwitterIcon className='w-4 h-4 relative bottom-0.5' /> x.com
                                 </Link> */}
