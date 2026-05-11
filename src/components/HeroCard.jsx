@@ -36,6 +36,7 @@ function HeroCard() {
               src={profile.picture}
               alt="Profile Picture"
               fetchPriority='high'
+              loading='eager'
               className="relative w-full h-64 sm:h-72  md:h-80  object-cover border-2 border-green-400 transform transition-transform duration-500 ease-in-out group-hover:scale-105 grayscale-75 hover:grayscale-0"
               style={{
                 clipPath:
