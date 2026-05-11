@@ -34,9 +34,9 @@ function HeroCard() {
             {/* Image */}
             <img
               src={profile.picture}
-              alt="Profile"
+              alt="Profile Picture"
               fetchPriority='high'
-              className="relative h-64 sm:h-72  md:h-80 w-full object-cover border-2 border-green-400 transform transition-transform duration-500 ease-in-out group-hover:scale-105 grayscale-75 hover:grayscale-0"
+              className="relative w-full h-64 sm:h-72  md:h-80  object-cover border-2 border-green-400 transform transition-transform duration-500 ease-in-out group-hover:scale-105 grayscale-75 hover:grayscale-0"
               style={{
                 clipPath:
                   'polygon(30px 0,100% 0,100% calc(100% - 30px),calc(100% - 30px) 100%,0 100%,0 30px)',
