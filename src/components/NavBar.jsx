@@ -19,7 +19,12 @@ function NavBar() {
             <nav className="navBar sticky top-0 z-50 flex justify-between items-center py-3 md:py-3.5 px-8 w-[calc(100%-30px)] mx-4 rounded-lg backdrop-blur-lg">
                 {/* Logo */}
                 <div className="cursor-pointer" onClick={() => navigate('/')}>
-                    <img src={logo} alt="logo" className="h-11 md:h-13 xl:h-14" />
+                    <img
+                        src={logo}
+                        alt="logo"
+                        width="200"
+                        height="56"
+                        className="w-auto h-11 md:h-13 xl:h-14" />
                 </div>
 
                 {
